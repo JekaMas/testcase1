@@ -10,4 +10,5 @@ easyjson: $(GOPATH)/bin/easyjson
 			./app/domain/campaign.go \
 			./app/domain/target.go \
             ./app/domain/target_collection.go \
+            ./app/domain/search_result.go \
 			./app/domain/attribute_collection.go
