@@ -1,15 +1,14 @@
 package generator
 
 import (
-	"generator/app/domain"
 	"strconv"
-	"log"
-	"errors"
+
+	"generator/app/domain"
 )
 
 var (
-	userIDGenerator      IGenerate
-	attributeIDGenerator IGenerate
+	userIDGenerator      Generate
+	attributeIDGenerator Generate
 )
 
 const maxAttributeNum = 200
@@ -26,17 +25,14 @@ func NewUser() (*domain.User, error) {
 	}
 
 	var (
-		attribute string
+		attribute       string
 		attributeNumber = getAttributeNumber()
 	)
+
+	r := getRandomGenerator()
 	for i := 0; i <= attributeNumber; i++ {
 		attribute = string('A' + i)
 		u.Profile[domain.AttributePrefix+attribute] = domain.Attribute(attribute + strconv.Itoa(r.Intn(maxAttributeNum)))
-	}
-
-	if !u.Verify() {
-		log.Printf("Incorrect uset has been generated %#+v\n.", u)
-		return nil, errors.New("Incorrect user has been generated")
 	}
 
 	return u, nil

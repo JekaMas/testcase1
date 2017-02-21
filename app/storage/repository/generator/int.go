@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 )
 
-type IGenerate interface {
+type Generate interface {
 	Get() int32
 	GetSlice(n int32) []int32
 	Reset()
@@ -14,13 +14,11 @@ type IGenerate interface {
 }
 
 var (
-	generators = make(map[interface{}]IGenerate)
+	generators = make(map[interface{}]Generate)
 	lock       sync.RWMutex
 )
 
-func Get(key interface{}) IGenerate {
-	//TODO проверки на nil
-
+func Get(key interface{}) Generate {
 	lock.RLock()
 	g, ok := generators[key]
 	lock.RUnlock()

@@ -89,21 +89,16 @@ func Benchmark_SearchCampaigns_Parallel(b *testing.B) {
 		},
 	}
 
-	var campaignFind domain.CampaignCollection
-
 	b.ResetTimer()
 	b.ReportAllocs()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			campaignFind, err = s.Search(user.Profile)
+			campaignFind, err := s.Search(user.Profile)
 			if err != nil {
 				b.Fatal(err)
 			}
+
+			_ = campaignFind
 		}
 	})
-
-	//FIXME make reasonable number
-	if len(campaignFind) == 100000 {
-		b.Fatal(campaignFind)
-	}
 }

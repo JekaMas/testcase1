@@ -6,8 +6,10 @@ import (
 
 const firstLatinLetter = 'A'
 
-func newTargetCollection(numTargets, numAttributes int) domain.TargetCollection {
-	setLesserRandom(&numTargets)
+func newTargetCollection(numTargets, numAttributes int, r *randomGenerator) domain.TargetCollection {
+	//r := getRandomGenerator()
+	//r := globalRand
+	r.setLesserRandom(&numTargets)
 
 	targets := make(domain.TargetCollection, 0, numTargets)
 	var attributePrefix string
@@ -17,7 +19,7 @@ func newTargetCollection(numTargets, numAttributes int) domain.TargetCollection 
 
 		targets = append(targets, domain.Target{
 			AttributeName: domain.AttributePrefix + attributePrefix,
-			Attributes:    newAttributeCollection(attributePrefix, numAttributes),
+			Attributes:    newAttributeCollection(attributePrefix, numAttributes, r),
 		})
 	}
 

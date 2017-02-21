@@ -17,7 +17,7 @@ const (
 	maxPrice = 1000000
 )
 
-var campaignIDGenerator IGenerate
+var campaignIDGenerator Generate
 
 func init() {
 	campaignIDGenerator = Get(campaignsID)
@@ -36,14 +36,15 @@ func NewCampaignCollection(numCampaigns, numTargets, numAttributes int) (domain.
 		return nil, fmt.Errorf("Number of attributes should be positive less or equal %v. Given %v.", maxAttributes, numAttributes)
 	}
 
-	setLesserRandom(&numCampaigns)
+	r := getRandomGenerator()
+	r.setLesserRandom(&numCampaigns)
 
 	campaigns := make(domain.CampaignCollection, 0, numCampaigns)
 	for i := 0; i < numCampaigns; i++ {
 		campaigns = append(campaigns, domain.Campaign{
 			CampaignName: domain.CampaignPrefix + strconv.Itoa(int(campaignIDGenerator.Get())),
 			Price:        float64(r.Intn(maxPrice)) / 100,
-			TargetList:   newTargetCollection(numTargets, numAttributes),
+			TargetList:   newTargetCollection(numTargets, numAttributes, r),
 		})
 	}
 

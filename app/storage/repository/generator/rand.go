@@ -2,11 +2,38 @@ package generator
 
 import (
 	"math/rand"
+	"sync"
 	"time"
 )
 
-var r = rand.New(rand.NewSource(time.Now().UnixNano()))
+type randomGenerator struct {
+	r *rand.Rand
+	sync.Mutex
+}
 
-func setLesserRandom(n *int) {
-	*n = r.Intn(*n) + 1
+func getRandomGenerator() *randomGenerator {
+	return &randomGenerator{
+		rand.New(rand.NewSource(time.Now().UnixNano())),
+		sync.Mutex{},
+	}
+}
+
+func (gen *randomGenerator) Int31n(n int32) int32 {
+	gen.Lock()
+	res := gen.r.Int31n(n)
+	gen.Unlock()
+
+	return res
+}
+
+func (gen *randomGenerator) Intn(n int) int {
+	gen.Lock()
+	res := gen.r.Intn(n)
+	gen.Unlock()
+
+	return res
+}
+
+func (gen *randomGenerator) setLesserRandom(n *int) {
+	*n = gen.Intn(*n) + 1
 }

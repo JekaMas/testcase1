@@ -6,7 +6,7 @@ import (
 
 var v int32
 func BenchmarkGetNew(b *testing.B) {
-	var gs = make([]IGenerate, b.N)
+	var gs = make([]Generate, b.N)
 
 	for i := 0; i < b.N; i++ {
 		gs[i] = Get(i)
