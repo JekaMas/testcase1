@@ -1,16 +1,16 @@
 package gokit
 
 import (
-	"generator/app/storage/repository"
-	"generator/app/domain"
 	"context"
-	"generator/app/inject"
-	"generator/app/services"
+	"fmt"
 	"net/http"
 
-	"fmt"
-
 	transport "github.com/go-kit/kit/transport/http"
+
+	"generator/app/domain"
+	"generator/app/inject"
+	"generator/app/services"
+	"generator/app/storage/repository"
 )
 
 //StoreCampaigns import campaigns into service
@@ -27,7 +27,7 @@ func StoreCampaigns(ctx inject.FullCtx) http.Handler {
 			return nil, fmt.Errorf("DB is not exists")
 		}
 
-		storeService := services.NewStoreCampaignsService(repository.CampaignRepository(db))
+		storeService := services.NewStoreCampaignsService(repository.NewCampaignRepository(db))
 		return storeService.StoreCampaigns(request.(domain.CampaignCollection))
 	}
 

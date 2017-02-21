@@ -1,14 +1,15 @@
 package gokit
 
 import (
+	"context"
 	"fmt"
-	"generator/app/inject"
-	"generator/app/services"
 	"net/http"
 
-	"context"
-	"generator/app/storage/repository"
 	transport "github.com/go-kit/kit/transport/http"
+
+	"generator/app/inject"
+	"generator/app/services"
+	"generator/app/storage/repository"
 )
 
 //AutoSearch generates random user profile and search campaign by it
@@ -31,7 +32,7 @@ func AutoSearch(ctx inject.FullCtx) http.Handler {
 			return nil, err
 		}
 
-		searchService := services.NewSearchService(repository.CampaignRepository(db))
+		searchService := services.NewSearchService(repository.NewCampaignRepository(db))
 		return searchService.Search(user)
 	}
 

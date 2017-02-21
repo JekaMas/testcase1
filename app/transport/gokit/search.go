@@ -1,15 +1,16 @@
 package gokit
 
 import (
+	"context"
+	"fmt"
+	"net/http"
+
+	transport "github.com/go-kit/kit/transport/http"
+
+	"generator/app/domain"
 	"generator/app/inject"
 	"generator/app/services"
 	"generator/app/storage/repository"
-	"generator/app/domain"
-	"net/http"
-	"fmt"
-
-	transport "github.com/go-kit/kit/transport/http"
-	"context"
 )
 
 //AutoSearch search campaign by user(profile)
@@ -26,7 +27,7 @@ func Search(ctx inject.FullCtx) http.Handler {
 			return nil, fmt.Errorf("DB is not exists")
 		}
 
-		searchService := services.NewSearchService(repository.CampaignRepository(db))
+		searchService := services.NewSearchService(repository.NewCampaignRepository(db))
 		return searchService.Search(request.(domain.User))
 	}
 
