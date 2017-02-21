@@ -1,12 +1,13 @@
 package gokit
 
 import (
-	"generator/app/inject"
-	"generator/app/services"
+	"context"
 	"net/http"
 
 	transport "github.com/go-kit/kit/transport/http"
-	"context"
+
+	"generator/app/inject"
+	"generator/app/services"
 )
 
 //GetUser - get new user

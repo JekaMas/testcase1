@@ -3,6 +3,7 @@ package domain
 import (
 	"encoding/json"
 	"testing"
+
 	"github.com/mailru/easyjson"
 )
 
@@ -90,6 +91,7 @@ var jsonCampaignCollection = []byte(`
 	]`)
 
 var res []byte
+
 func TestMarshall(t *testing.T) {
 
 	c := CampaignCollection{}

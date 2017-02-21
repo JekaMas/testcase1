@@ -1,12 +1,13 @@
 package app
 
 import (
-	net "context"
+	"context"
+	"log"
 
 	"github.com/gorilla/mux"
-	"log"
-	"generator/app/storage/repository/memory"
+
 	"generator/app/inject"
+	"generator/app/storage/repository/memory"
 )
 
 //Bootstrap - init application dependency
@@ -27,6 +28,6 @@ func (this *App) Bootstrap() error {
 
 func (this *App) initDatabase() error {
 	this.DB = memory.NewStorage()
-	this.Ctx = net.WithValue(this.Ctx, inject.DB, this.DB)
+	this.Ctx = context.WithValue(this.Ctx, inject.DB, this.DB)
 	return nil
 }

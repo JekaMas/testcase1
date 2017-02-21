@@ -1,11 +1,12 @@
 package generator
 
 import (
+	"errors"
 	"fmt"
-	"generator/app/domain"
 	"log"
 	"strconv"
-	"errors"
+
+	"generator/app/domain"
 )
 
 const (
@@ -37,7 +38,6 @@ func NewCampaignCollection(numCampaigns, numTargets, numAttributes int) (domain.
 	}
 
 	r := getRandomGenerator()
-	r.setLesserRandom(&numCampaigns)
 
 	campaigns := make(domain.CampaignCollection, 0, numCampaigns)
 	for i := 0; i < numCampaigns; i++ {
@@ -49,7 +49,7 @@ func NewCampaignCollection(numCampaigns, numTargets, numAttributes int) (domain.
 	}
 
 	if !campaigns.Verify() {
-		log.Printf("Incorrect Campaigns has been generated %#+v\n." +
+		log.Printf("Incorrect Campaigns has been generated %#+v\n."+
 			" numCampaigns %v,numTargets %v, numAttributes %v\n", campaigns, numCampaigns, numTargets, numAttributes)
 		return nil, errors.New("Incorrect Campaigns has been generated")
 	}

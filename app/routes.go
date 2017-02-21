@@ -1,10 +1,10 @@
 package app
 
 import (
+	"github.com/gorilla/mux"
+
 	"generator/app/inject"
 	"generator/app/transport/gokit"
-
-	"github.com/gorilla/mux"
 )
 
 //InitRouter - init router for net/http

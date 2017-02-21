@@ -2,6 +2,7 @@ package inject
 
 import (
 	"sync"
+
 	"generator/app/storage"
 )
 

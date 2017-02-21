@@ -1,13 +1,12 @@
 package generator
 
 import (
-	"generator/app/domain"
 	"strconv"
+
+	"generator/app/domain"
 )
 
 func newAttributeCollection(attributePrefix string, numAttributes int, r *randomGenerator) domain.AttributeCollection {
-	//r := getRandomGenerator()
-	//r := globalRand
 	r.setLesserRandom(&numAttributes)
 
 	attributes := make(domain.AttributeCollection, 0, numAttributes)

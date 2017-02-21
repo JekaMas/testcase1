@@ -1,10 +1,11 @@
 package generator
 
 import (
-	"generator/app/domain"
 	"strconv"
 	"strings"
 	"testing"
+
+	"generator/app/domain"
 )
 
 func Test_CorrectNewUser_Success(t *testing.T) {

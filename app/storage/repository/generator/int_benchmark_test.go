@@ -5,6 +5,7 @@ import (
 )
 
 var v int32
+
 func BenchmarkGetNew(b *testing.B) {
 	var gs = make([]Generate, b.N)
 

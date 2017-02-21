@@ -2,10 +2,11 @@ package domain
 
 import (
 	"encoding/json"
+	"strings"
+
 	"github.com/mailru/easyjson"
 	"github.com/mailru/easyjson/jlexer"
 	"github.com/mailru/easyjson/jwriter"
-	"strings"
 )
 
 type Campaign struct {

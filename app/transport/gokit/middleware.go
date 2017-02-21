@@ -9,10 +9,10 @@ import (
 	"log"
 	"net/http"
 
+	transport "github.com/go-kit/kit/transport/http"
+
 	"generator/app/domain"
 	"generator/app/inject"
-
-	transport "github.com/go-kit/kit/transport/http"
 )
 
 func AddRequest() transport.RequestFunc {

@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-//TODO add jeka Diff
 func TestUserMarshal(t *testing.T) {
 	u := &User{
 		User: "u3",

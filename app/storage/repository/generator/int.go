@@ -2,7 +2,6 @@ package generator
 
 import (
 	"sync"
-	//"sync/atomic"
 	"sync/atomic"
 )
 

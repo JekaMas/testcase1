@@ -1,9 +1,9 @@
 package services
 
 import (
+	"generator/app/domain"
 	"generator/app/storage/repository"
 	"generator/app/storage/repository/generator"
-	"generator/app/domain"
 )
 
 type SearchService struct {

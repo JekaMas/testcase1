@@ -30,7 +30,6 @@ func (s *store) Store(campaignCollection domain.CampaignCollection) error {
 					campaignNames = make(campaignAttributeCount)
 				}
 
-
 				campaignNames[campaign.CampaignName] = len(campaign.TargetList)
 
 				attributeMap[attribute] = campaignNames

@@ -1,11 +1,10 @@
 package inject
 
 import (
+	"context"
 	"net/http"
 
 	"generator/app/storage"
-
-	"context"
 )
 
 type (

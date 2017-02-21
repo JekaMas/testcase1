@@ -2,15 +2,14 @@ package inject
 
 import (
 	"bytes"
-	"net/http"
-	"net/url"
 	"context"
 	"fmt"
-
-	"generator/app/storage"
+	"net/http"
+	"net/url"
 
 	"github.com/gorilla/mux"
 
+	"generator/app/storage"
 )
 
 //NewTyped - constructor for FullCtx

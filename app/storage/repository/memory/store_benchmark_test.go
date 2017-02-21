@@ -1,9 +1,10 @@
 package memory
 
 import (
+	"testing"
+
 	"generator/app/domain"
 	"generator/app/storage/repository/generator"
-	"testing"
 )
 
 func Benchmark_SearchCampaigns(b *testing.B) {

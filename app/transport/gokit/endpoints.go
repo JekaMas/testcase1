@@ -1,14 +1,13 @@
 package gokit
 
 import (
+	"context"
+	"errors"
 	"net/http"
 
 	transport "github.com/go-kit/kit/transport/http"
-	"context"
 
 	"generator/app/inject"
-
-	"errors"
 )
 
 //HandleNotFound - 400 error

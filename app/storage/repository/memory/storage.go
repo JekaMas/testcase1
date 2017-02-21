@@ -1,9 +1,10 @@
 package memory
 
 import (
+	"sync"
+
 	"generator/app/domain"
 	"generator/app/storage"
-	"sync"
 )
 
 // map[CampaignName]domain.Campaign

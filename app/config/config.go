@@ -10,8 +10,8 @@ func New() *Config {
 
 //Config - config for app
 type Config struct {
-	Host            string
-	Port            int
+	Host string
+	Port int
 }
 
 //GetPort - get service port
@@ -21,4 +21,3 @@ func (this Config) GetPort() int {
 	}
 	return this.Port
 }
-

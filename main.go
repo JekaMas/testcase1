@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strconv"
 
 	"generator/app"
 	"generator/app/config"
-
-	"strconv"
 )
 
 var port string

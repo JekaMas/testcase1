@@ -1,10 +1,11 @@
 package generator
 
 import (
-	"generator/app/domain"
-	"testing"
-	"reflect"
 	"fmt"
+	"reflect"
+	"testing"
+
+	"generator/app/domain"
 )
 
 func Test_IncorrectCampaignNumber_Fail(t *testing.T) {

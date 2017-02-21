@@ -1,9 +1,10 @@
 package memory
 
 import (
-	"generator/app/domain"
 	"reflect"
 	"testing"
+
+	"generator/app/domain"
 )
 
 func Test_StoreCampaigns_Success(t *testing.T) {
