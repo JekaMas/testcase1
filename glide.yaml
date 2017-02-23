@@ -1,7 +1,7 @@
 package: generator
 import:
 - package: github.com/go-kit/kit
-  version: ^0.3.0
+  version: d99ca5c5049bede38c09cbc0765fd92b4340c4e9
   subpackages:
   - transport/http
 - package: github.com/gorilla/mux
