@@ -11,8 +11,8 @@ import (
 
 const (
 	maxCampaigns  = 10000
-	maxTargets    = 26
-	maxAttributes = 100
+	MaxTargets    = 26
+	MaxAttributes = 100
 
 	//maxPrice*100
 	maxPrice = 1000000
@@ -29,12 +29,12 @@ func NewCampaignCollection(numCampaigns, numTargets, numAttributes int) (domain.
 		return nil, fmt.Errorf("Number of campaigns should be positive less or equal %v. Given %v.", maxCampaigns, numCampaigns)
 	}
 
-	if numTargets > maxTargets || numTargets <= 0 {
-		return nil, fmt.Errorf("Number of targets should be positive less or equal %v. Given %v.", maxTargets, numTargets)
+	if numTargets > MaxTargets || numTargets <= 0 {
+		return nil, fmt.Errorf("Number of targets should be positive less or equal %v. Given %v.", MaxTargets, numTargets)
 	}
 
-	if numAttributes > maxAttributes || numAttributes <= 0 {
-		return nil, fmt.Errorf("Number of attributes should be positive less or equal %v. Given %v.", maxAttributes, numAttributes)
+	if numAttributes > MaxAttributes || numAttributes <= 0 {
+		return nil, fmt.Errorf("Number of attributes should be positive less or equal %v. Given %v.", MaxAttributes, numAttributes)
 	}
 
 	r := getRandomGenerator()

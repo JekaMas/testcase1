@@ -10,32 +10,26 @@ func (s *store) Store(campaignCollection domain.CampaignCollection) error {
 	s.storageLock.Unlock()
 
 	var (
-		ok            bool
-		attributeMap  attributeIndex
+		attributeMap  *attributeIndex
 		campaignNames campaignAttributeCount
 	)
 
 	s.indexLock.Lock()
 	for _, campaign := range campaignCollection {
 		for _, target := range campaign.TargetList {
-			attributeMap, ok = storageInstance.searchIndex[target.AttributeName]
-
-			if !ok {
-				attributeMap = make(attributeIndex)
-			}
+			attributeMap = storageInstance.searchIndex.getAttributes(target.AttributeName)
 
 			for _, attribute := range target.Attributes {
-				campaignNames, ok = attributeMap[attribute]
-				if !ok {
+				campaignNames = attributeMap.getCampaigns(attribute)
+				if campaignNames == nil {
 					campaignNames = make(campaignAttributeCount)
 				}
-
 				campaignNames[campaign.CampaignName] = len(campaign.TargetList)
 
-				attributeMap[attribute] = campaignNames
+				attributeMap.setCampaigns(attribute, campaignNames)
 			}
 
-			storageInstance.searchIndex[target.AttributeName] = attributeMap
+			//storageInstance.searchIndex[target.AttributeName] = attributeMap
 		}
 	}
 	s.indexLock.Unlock()

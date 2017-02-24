@@ -21,7 +21,7 @@ func Test_IncorrectCampaignNumber_Fail(t *testing.T) {
 }
 
 func Test_IncorrectTargetsNumber_Fail(t *testing.T) {
-	cases := []int{-1, 0, maxTargets + 1, maxTargets * 10}
+	cases := []int{-1, 0, MaxTargets + 1, MaxTargets * 10}
 
 	var err error
 	for _, testCase := range cases {
@@ -33,7 +33,7 @@ func Test_IncorrectTargetsNumber_Fail(t *testing.T) {
 }
 
 func Test_IncorrectAttributesNumber_Fail(t *testing.T) {
-	cases := []int{-1, 0, maxAttributes + 1, maxAttributes * 10}
+	cases := []int{-1, 0, MaxAttributes + 1, MaxAttributes * 10}
 
 	var err error
 	for _, testCase := range cases {

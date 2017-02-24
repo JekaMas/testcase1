@@ -11,7 +11,7 @@ var (
 	attributeIDGenerator Generate
 )
 
-const maxAttributeNum = 200
+const MaxAttributeNum = 200
 
 func init() {
 	userIDGenerator = Get(userID)
@@ -32,7 +32,7 @@ func NewUser() (*domain.User, error) {
 	r := getRandomGenerator()
 	for i := 0; i <= attributeNumber; i++ {
 		attribute = string('A' + i)
-		u.Profile[domain.AttributePrefix+attribute] = domain.Attribute(attribute + strconv.Itoa(r.Intn(maxAttributeNum)))
+		u.Profile[domain.AttributePrefix+attribute] = domain.Attribute(attribute + strconv.Itoa(r.Intn(MaxAttributeNum)))
 	}
 
 	return u, nil
