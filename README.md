@@ -1,10 +1,36 @@
-# Campaign import and search service
+##This is my golang code example written in 2 days for test on interview.
+
+[Test task description](task.pdf)
+
+# Start service
     Usage `go run ./main.go -port=3000`
 
-## Performance
-    rk ­c 64 ­d 10s http://localhost:3000/search_auto
+# Campaign Data Generator
+    curl -XGET 'http://host:3000/campaign?x={number}&y={number}&z={number}'
+    The generator has parameters: X (X <= 100) , Y (Y =< 26), Z (Z <= 10000)
 
-  Output on X=50, Y=10, Z=1000:
+# Generate user
+    curl -XGET 'http://host:3000/user'
+
+# Campaign import
+    curl -XPOST 'http://host:3000/import_camp' -d '{CAMPAIGN_JSON_DATA}'
+ 
+# Campaign searching by user info (user targets matched campaign attributes)
+    curl -XPOST 'http://host:3000/search' -d '{USER_JSON_DATA}'
+
+# Create users and do campaign search
+    curl -XGET 'http://host:3000/search_auto'
+
+## Performance testing
+  Test data: 1000 campaigns with up to 10 target lists with up to 50 attributes.
+
+    curl -XGET 'http://host:3000/campaign?x=50&y=10&z=1000'
+
+  Start test (wrk should be installed):
+
+    wrk http://localhost:3000/search_auto -c64 -d10s
+
+  Output on model A1502 (Apple MacBook Pro A1502 (October, 2013)):
 
     Running 10s test @ http://localhost:3000/search_auto
       2 threads and 64 connections
