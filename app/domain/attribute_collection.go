@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-//"attr_list":["A0",...,"A99"]
+//easyjson:json
 type AttributeCollection []Attribute
 
 func (c AttributeCollection) Verify() bool {

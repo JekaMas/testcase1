@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+//easyjson:json
 type Target struct {
 	AttributeName string              `json:"target"`
 	Attributes    AttributeCollection `json:"attr_list"`

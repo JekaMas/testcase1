@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonBb771ebaDecodeGeneratorAppDomain(in *jlexer.Lexer, out *SearchResult) {
+func easyjson9e1087fdDecodeGeneratorAppDomain(in *jlexer.Lexer, out *User) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -36,10 +36,10 @@ func easyjsonBb771ebaDecodeGeneratorAppDomain(in *jlexer.Lexer, out *SearchResul
 			continue
 		}
 		switch key {
-		case "winner":
-			out.Winner = string(in.String())
-		case "counter":
-			out.Counter = int(in.Int())
+		case "user":
+			out.User = string(in.String())
+		case "profile":
+			(out.Profile).UnmarshalEasyJSON(in)
 		default:
 			in.SkipRecursive()
 		}
@@ -50,7 +50,7 @@ func easyjsonBb771ebaDecodeGeneratorAppDomain(in *jlexer.Lexer, out *SearchResul
 		in.Consumed()
 	}
 }
-func easyjsonBb771ebaEncodeGeneratorAppDomain(out *jwriter.Writer, in SearchResult) {
+func easyjson9e1087fdEncodeGeneratorAppDomain(out *jwriter.Writer, in User) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -58,37 +58,37 @@ func easyjsonBb771ebaEncodeGeneratorAppDomain(out *jwriter.Writer, in SearchResu
 		out.RawByte(',')
 	}
 	first = false
-	out.RawString("\"winner\":")
-	out.String(string(in.Winner))
+	out.RawString("\"user\":")
+	out.String(string(in.User))
 	if !first {
 		out.RawByte(',')
 	}
 	first = false
-	out.RawString("\"counter\":")
-	out.Int(int(in.Counter))
+	out.RawString("\"profile\":")
+	(in.Profile).MarshalEasyJSON(out)
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
-func (v SearchResult) MarshalJSON() ([]byte, error) {
+func (v User) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonBb771ebaEncodeGeneratorAppDomain(&w, v)
+	easyjson9e1087fdEncodeGeneratorAppDomain(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
-func (v SearchResult) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonBb771ebaEncodeGeneratorAppDomain(w, v)
+func (v User) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson9e1087fdEncodeGeneratorAppDomain(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
-func (v *SearchResult) UnmarshalJSON(data []byte) error {
+func (v *User) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonBb771ebaDecodeGeneratorAppDomain(&r, v)
+	easyjson9e1087fdDecodeGeneratorAppDomain(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *SearchResult) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonBb771ebaDecodeGeneratorAppDomain(l, v)
+func (v *User) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson9e1087fdDecodeGeneratorAppDomain(l, v)
 }

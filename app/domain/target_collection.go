@@ -1,5 +1,6 @@
 package domain
 
+//easyjson:json
 type TargetCollection []Target
 
 func (c TargetCollection) Verify() bool {

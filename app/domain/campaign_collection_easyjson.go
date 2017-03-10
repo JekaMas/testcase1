@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonCa463557DecodeGeneratorAppDomain(in *jlexer.Lexer, out *AttributeCollection) {
+func easyjsonFf86ed8bDecodeGeneratorAppDomain(in *jlexer.Lexer, out *CampaignCollection) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		in.Skip()
@@ -26,16 +26,16 @@ func easyjsonCa463557DecodeGeneratorAppDomain(in *jlexer.Lexer, out *AttributeCo
 		in.Delim('[')
 		if *out == nil {
 			if !in.IsDelim(']') {
-				*out = make(AttributeCollection, 0, 4)
+				*out = make(CampaignCollection, 0, 1)
 			} else {
-				*out = AttributeCollection{}
+				*out = CampaignCollection{}
 			}
 		} else {
 			*out = (*out)[:0]
 		}
 		for !in.IsDelim(']') {
-			var v1 Attribute
-			v1 = Attribute(in.String())
+			var v1 Campaign
+			(v1).UnmarshalEasyJSON(in)
 			*out = append(*out, v1)
 			in.WantComma()
 		}
@@ -45,7 +45,7 @@ func easyjsonCa463557DecodeGeneratorAppDomain(in *jlexer.Lexer, out *AttributeCo
 		in.Consumed()
 	}
 }
-func easyjsonCa463557EncodeGeneratorAppDomain(out *jwriter.Writer, in AttributeCollection) {
+func easyjsonFf86ed8bEncodeGeneratorAppDomain(out *jwriter.Writer, in CampaignCollection) {
 	if in == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 		out.RawString("null")
 	} else {
@@ -54,32 +54,32 @@ func easyjsonCa463557EncodeGeneratorAppDomain(out *jwriter.Writer, in AttributeC
 			if v2 > 0 {
 				out.RawByte(',')
 			}
-			out.String(string(v3))
+			(v3).MarshalEasyJSON(out)
 		}
 		out.RawByte(']')
 	}
 }
 
 // MarshalJSON supports json.Marshaler interface
-func (v AttributeCollection) MarshalJSON() ([]byte, error) {
+func (v CampaignCollection) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonCa463557EncodeGeneratorAppDomain(&w, v)
+	easyjsonFf86ed8bEncodeGeneratorAppDomain(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
-func (v AttributeCollection) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonCa463557EncodeGeneratorAppDomain(w, v)
+func (v CampaignCollection) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjsonFf86ed8bEncodeGeneratorAppDomain(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
-func (v *AttributeCollection) UnmarshalJSON(data []byte) error {
+func (v *CampaignCollection) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonCa463557DecodeGeneratorAppDomain(&r, v)
+	easyjsonFf86ed8bDecodeGeneratorAppDomain(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
-func (v *AttributeCollection) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonCa463557DecodeGeneratorAppDomain(l, v)
+func (v *CampaignCollection) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjsonFf86ed8bDecodeGeneratorAppDomain(l, v)
 }

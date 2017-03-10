@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+//easyjson:json
 type User struct {
 	User    string            `json:"user"`
 	Profile ProfileCollection `json:"profile"`
